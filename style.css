@@ -188,7 +188,7 @@ section .accent {
     color: var(--text-dark); 
 }
 
-/* 5. Galeria */
+/* 5. Galeria (Grid de Fotos) */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -203,9 +203,132 @@ section .accent {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* ================================== */
+/* 5.A. GALERIA - POR LOCAL (ATUALIZADO) */
+/* ================================== */
+
+.location-gallery {
+    /* Wrapper para cada cidade */
+    margin-bottom: 3rem; /* Espaço entre as galerias de diferentes cidades */
+}
+
+.location-gallery:last-child {
+    margin-bottom: 0;
+}
+
+/* NOVO ESTILO (OPÇÃO 2: ELEGANTE) */
+/* OPÇÃO 3: FORMATO "TAG" (PARA GALERIA) */
+.location-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem; /* Menor para a tag */
+    font-weight: 500;
+    color: var(--accent-brown);
+    text-align: left; /* Mantém alinhamento desktop */
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.25rem; /* Padding da tag */
+    border: 1px solid var(--border-color); /* Borda completa */
+    border-radius: 20px; /* Cantos arredondados */
+    display: inline-block; /* Faz a borda envolver o texto */
+    /* A regra 'text-align: center' do seu @media query vai centralizar esta tag no mobile */
+}
+
+/* ===================================== */
+/* 5.B. ESTILOS DA SEÇÃO PROJETOS */
+/* ===================================== */
+#projetos {
+    background-color: var(--bg-medium); /* Alterna a cor de fundo */
+}
+
+.projeto-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Coluna da imagem menor (1 parte), texto maior (2 partes) */
+    gap: 3rem;
+    align-items: center;
+    text-align: left; /* Alinha o texto da descrição à esquerda */
+    max-width: 800px; /* Limita a largura para melhor leitura */
+    margin: 0 auto;
+    /* Adiciona margem inferior se houver múltiplos projetos */
+    margin-bottom: 3rem; 
+}
+
+/* Remove a margem do último projeto */
+.projeto-grid:last-child {
+    margin-bottom: 0;
+}
+
+.projeto-img img {
+    width: 100%;
+    max-width: 280px; /* Tamanho da foto */
+    border-radius: 50%; /* Define a imagem como CÍRCULO */
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* Imagem quadrada */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 5px solid var(--border-color);
+    margin: 0 auto; 
+    display: block;
+}
+
+.projeto-info h3 {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.projeto-info .role {
+    font-size: 1.2rem;
+    color: var(--accent-brown);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.projeto-info p {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* Botão opcional dentro do card de projeto */
+.projeto-info .btn {
+    margin-left: 0;
+    margin-top: 1rem;
+    border-color: var(--accent-brown);
+    color: var(--accent-brown);
+}
+.projeto-info .btn:hover {
+    background-color: var(--accent-brown);
+    color: white;
+}
+
+
+/* Deixa a seção responsiva em telas menores */
+@media (max-width: 768px) {
+    .projeto-grid {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        text-align: center; 
+        gap: 2rem;
+    }
+    
+    .projeto-img img {
+        margin-bottom: 1rem;
+        max-width: 240px; 
+        border-radius: 50%; /* Mantém o círculo no mobile */
+    }
+
+    .projeto-info {
+        text-align: center; 
+    }
+
+    /* Adicionado: Alinha o título da localização no centro em telas pequenas */
+    .location-title {
+        text-align: center;
+    }
+}
+
+
 /* 6. Vídeos (Layout "Rolante" com BOTÕES) */
 
-/* NOVO: Wrapper dos botões */
+/* Wrapper dos botões */
 .slider-wrapper {
     position: relative;
     /* Ajuste o 'max-width' para o tamanho do seu slider */
@@ -213,7 +336,7 @@ section .accent {
     margin: 0 auto;
 }
 
-/* NOVO: Estilo dos botões */
+/* Estilo dos botões */
 .slider-arrow {
     position: absolute;
     top: 50%;
@@ -252,12 +375,12 @@ section .accent {
     scroll-snap-type: x mandatory; 
     padding-bottom: 0.5rem; /* Remove o espaço da barra de scroll */
 
-    /* MUDANÇA: ESCONDE A BARRA DE ROLAGEM */
+    /* ESCONDE A BARRA DE ROLAGEM */
     scrollbar-width: none;     /* Firefox */
     -ms-overflow-style: none;  /* IE/Edge */
 }
 
-/* MUDANÇA: ESCONDE A BARRA DE ROLAGEM */
+/* ESCONDE A BARRA DE ROLAGEM */
 .video-grid::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
 }
@@ -402,5 +525,34 @@ footer {
     background-color: var(--bg-medium);
     border-top: 1px solid var(--border-color);
     font-size: 0.9rem;
+}
 
+
+/* ============================================== */
+/* 9.B. ESTILOS DO RODAPÉ (ÍCONES SOCIAIS) */
+/* ============================================== */
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; /* Espaçamento entre os links e o texto */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Espaçamento entre os ícones */
+    margin-bottom: 0.5rem;
+}
+
+.social-links a {
+    color: var(--text-dark); /* Cor principal do texto */
+    font-size: 1.8rem; /* Tamanho do ícone */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-brown); /* Cor de destaque ao passar o mouse */
+    transform: scale(1.1); /* Efeito de leve zoom */
 }
