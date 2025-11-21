@@ -107,15 +107,15 @@ section .accent {
 
 /* 3. Hero */
 #hero {
-    background-image: url('https://i.imgur.com/k2ugkgQ.jpg'); 
+    background-image: url('https://imgur.com/XX9PGI8.jpg'); 
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 2%;
     display: flex;
     align-items: center;          
     justify-content: flex-start;  
-    padding-top: 60px;
+    padding-top: 260px;
     position: relative; 
     text-align: left;             
 }
