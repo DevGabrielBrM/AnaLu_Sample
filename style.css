@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - AJUSTES PARA RESPONSIVIDADE PROFISSIONAL */
 
 /* Paleta de Cores do Projeto Original */
 :root {
@@ -107,11 +107,13 @@ section .accent {
 
 /* 3. Hero */
 #hero {
+    /* ALTURA AJUSTADA PARA FICAR MAIS ALTO NO DESKTOP E MÓVEL */
     background-image: url('https://imgur.com/XX9PGI8.jpg'); 
     background-size: cover;       
     background-position: center;  
     background-repeat: no-repeat;
-    height: 2%;
+    /* Antes: height: 2%; */
+    height: 100vh; /* Usa a altura total da viewport no desktop */
     display: flex;
     align-items: center;          
     justify-content: flex-start;  
@@ -191,7 +193,8 @@ section .accent {
 /* 5. Galeria (Grid de Fotos) */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Ajustado para no mínimo 250px, mas 3 colunas padrão no desktop */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 1rem;
 }
 
@@ -209,45 +212,42 @@ section .accent {
 
 .location-gallery {
     /* Wrapper para cada cidade */
-    margin-bottom: 3rem; /* Espaço entre as galerias de diferentes cidades */
+    margin-bottom: 3rem; 
 }
 
 .location-gallery:last-child {
     margin-bottom: 0;
 }
 
-/* NOVO ESTILO (OPÇÃO 2: ELEGANTE) */
-/* OPÇÃO 3: FORMATO "TAG" (PARA GALERIA) */
 .location-title {
     font-family: 'Lato', sans-serif;
-    font-size: 1rem; /* Menor para a tag */
+    font-size: 1rem; 
     font-weight: 500;
     color: var(--accent-brown);
-    text-align: left; /* Mantém alinhamento desktop */
+    text-align: left; 
     margin-bottom: 1.5rem;
-    padding: 0.5rem 1.25rem; /* Padding da tag */
-    border: 1px solid var(--border-color); /* Borda completa */
-    border-radius: 20px; /* Cantos arredondados */
-    display: inline-block; /* Faz a borda envolver o texto */
-    /* A regra 'text-align: center' do seu @media query vai centralizar esta tag no mobile */
+    padding: 0.5rem 1.25rem; 
+    border: 1px solid var(--border-color); 
+    border-radius: 20px; 
+    display: inline-block; 
 }
 
 /* ===================================== */
 /* 5.B. ESTILOS DA SEÇÃO PROJETOS */
 /* ===================================== */
 #projetos {
-    background-color: var(--bg-medium); /* Alterna a cor de fundo */
+    background-color: var(--bg-medium); 
 }
 
 .projeto-grid {
+    /* Mantém 1fr 2fr no desktop */
     display: grid;
-    grid-template-columns: 1fr 2fr; /* Coluna da imagem menor (1 parte), texto maior (2 partes) */
+    grid-template-columns: 1fr 2fr; 
     gap: 3rem;
     align-items: center;
-    text-align: left; /* Alinha o texto da descrição à esquerda */
-    max-width: 800px; /* Limita a largura para melhor leitura */
+    text-align: left; 
+    max-width: 800px; 
     margin: 0 auto;
-    /* Adiciona margem inferior se houver múltiplos projetos */
     margin-bottom: 3rem; 
 }
 
@@ -258,10 +258,10 @@ section .accent {
 
 .projeto-img img {
     width: 100%;
-    max-width: 280px; /* Tamanho da foto */
-    border-radius: 50%; /* Define a imagem como CÍRCULO */
+    max-width: 280px; 
+    border-radius: 50%; 
     object-fit: cover;
-    aspect-ratio: 1 / 1; /* Imagem quadrada */
+    aspect-ratio: 1 / 1; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border: 5px solid var(--border-color);
     margin: 0 auto; 
@@ -303,6 +303,61 @@ section .accent {
 
 /* Deixa a seção responsiva em telas menores */
 @media (max-width: 768px) {
+    /* --- 1. AJUSTES GERAIS E NAV --- */
+    /* Padding e espaçamento vertical reduzido em todas as seções */
+    section {
+        padding: 4rem 0;
+    }
+    
+    /* Títulos de seção menores */
+    section h2 {
+        font-size: 2rem;
+    }
+    
+    /* Esconder links da nav no mobile (se for usar um menu hambúrguer, o HTML precisa ser ajustado) */
+    /* Para este exercício, vamos centralizar os links se não houver hambúrguer */
+    nav .container {
+        justify-content: center;
+    }
+    nav .nav-links a {
+        margin: 0 0.75rem; /* Espaço menor entre os links */
+    }
+
+    /* --- 2. HERO (Prioridade em telas menores) --- */
+    #hero {
+        /* Garante que o Hero seja visível na primeira tela, mas não ocupa TUDO */
+        height: 70vh; /* Altura reduzida para 70% da viewport */
+        padding-top: 150px; /* Reduz o padding superior */
+        align-items: flex-end; /* Alinha o conteúdo na parte de baixo */
+        padding-bottom: 2rem; /* Adiciona padding na parte de baixo */
+    }
+
+    #hero h1 {
+        font-size: 3rem; /* Título principal menor */
+    }
+
+    #hero .subtitle {
+        font-size: 1.5rem; /* Subtítulo menor */
+    }
+
+    #hero .description {
+        font-size: 1rem; /* Descrição menor */
+        max-width: 90%; /* Usa mais da largura da tela */
+        margin-bottom: 1rem;
+    }
+
+    /* O container do Hero alinha à esquerda por padrão, mantém a margem 0 no lado esquerdo */
+    #hero .container {
+        margin-left: 1rem;
+    }
+
+
+    /* --- 3. GALERIA e PROJETOS --- */
+    .gallery-grid {
+        /* Garante que haja pelo menos 2 colunas se houver espaço (mínimo de 150px) */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
     .projeto-grid {
         grid-template-columns: 1fr; /* Coluna única no mobile */
         text-align: center; 
@@ -312,26 +367,60 @@ section .accent {
     .projeto-img img {
         margin-bottom: 1rem;
         max-width: 240px; 
-        border-radius: 50%; /* Mantém o círculo no mobile */
+        border-radius: 50%; 
     }
 
     .projeto-info {
         text-align: center; 
     }
+    
+    .projeto-info .btn {
+        margin: 1rem auto 0 auto; /* Centraliza o botão */
+    }
 
-    /* Adicionado: Alinha o título da localização no centro em telas pequenas */
+    /* Ajusta o título da localização da galeria */
     .location-title {
         text-align: center;
+        display: block; /* Ocupa a largura total para centralizar o bloco */
+    }
+
+    /* --- 4. VÍDEOS --- */
+    .video-card {
+        flex: 0 0 90%; /* Ocupa 90% da largura do contêiner para melhor visualização em retrato */
+    }
+    
+    .slider-arrow {
+        /* Esconde as setas, pois a rolagem por toque é esperada */
+        display: none; 
+    }
+    .slider-wrapper {
+        /* Remove o max-width para melhor uso do container em 100% da tela */
+        max-width: 100%; 
+        padding: 0 1rem; /* Padding do container forçado */
+        margin: 0;
+    }
+
+    /* --- 5. SERVIÇOS --- */
+    .packages-grid {
+        /* Permite que os cards usem mais largura se não couberem lado a lado */
+        grid-template-columns: 1fr; 
+    }
+    
+    .package-card {
+        padding: 1.5rem; /* Padding interno reduzido */
+    }
+
+    /* --- 6. RODAPÉ --- */
+    .social-links {
+        gap: 1.5rem;
     }
 }
-
 
 /* 6. Vídeos (Layout "Rolante" com BOTÕES) */
 
 /* Wrapper dos botões */
 .slider-wrapper {
     position: relative;
-    /* Ajuste o 'max-width' para o tamanho do seu slider */
     max-width: 90%; 
     margin: 0 auto;
 }
@@ -360,20 +449,20 @@ section .accent {
 }
 
 #scroll-left {
-    left: -20px; /* Metade da largura do botão */
+    left: -20px; 
 }
 
 #scroll-right {
-    right: -20px; /* Metade da largura do botão */
+    right: -20px; 
 }
 
 
 .video-grid {
     display: flex;         
-    overflow-x: auto;      /* A rolagem ainda existe, mas... */
+    overflow-x: auto;      
     gap: 1rem;
     scroll-snap-type: x mandatory; 
-    padding-bottom: 0.5rem; /* Remove o espaço da barra de scroll */
+    padding-bottom: 0.5rem; 
 
     /* ESCONDE A BARRA DE ROLAGEM */
     scrollbar-width: none;     /* Firefox */
@@ -535,24 +624,24 @@ footer .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem; /* Espaçamento entre os links e o texto */
+    gap: 0.5rem; 
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 2rem; /* Espaçamento entre os ícones */
+    gap: 2rem; 
     margin-bottom: 0.5rem;
 }
 
 .social-links a {
-    color: var(--text-dark); /* Cor principal do texto */
-    font-size: 1.8rem; /* Tamanho do ícone */
+    color: var(--text-dark); 
+    font-size: 1.8rem; 
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--accent-brown); /* Cor de destaque ao passar o mouse */
-    transform: scale(1.1); /* Efeito de leve zoom */
+    color: var(--accent-brown); 
+    transform: scale(1.1); 
 }
